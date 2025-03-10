@@ -1,13 +1,13 @@
-# Range-Energy analysis for E07 nuclear emulsion
+# Range-Energy relation for E07 nuclear emulsion
 
 This repository contains the source code for the Range-Energy calclation for the E07 nuclear emulsion.
-Many of the calculations based on [ATIMA](https://web-docs.gsi.de/~weick/atima/) and [pycatima](https://github.com/hrosiak/pycatima).
-It includes experimental data and code to calculate the binding energy of hypernuclei.
+It includes experimental data and code to calculate the binding energy of $\Lambda\$ hypernuclei.
+Stopping-power calculations based on [ATIMA](https://web-docs.gsi.de/~weick/atima/) and [pycatima](https://github.com/hrosiak/pycatima).
 [Link for the paper](https://arxiv.org/).
 
 ## Contents
 
-- main: Calclate binding energy of $^{3}_{\Lambda}\rm{H}$ and $^{4}_{\Lambda}\rm{H}$ (Figure. 3)
+- main: Calclate binding energy of H3 $\Lambda$ and H4 $\Lambda\$
   - rangeenergy
     - ATIMA_RangeEnergy
   - kinema
@@ -18,13 +18,13 @@ It includes experimental data and code to calculate the binding energy of hypern
   - cut_events
   - calc_invariant_mass
   - plot_results
-- mom_Helium_vs_pi: Compare deduced momentum from Helium and pion (Extended Data Figure. 3)
+- mom_Helium_vs_pi: Compare deduced momentum from Helium and pion
 - BL_weighted: Calclate world average from experimental data
 - rangeenergy_gui: GUI tool
 - data
   - alldata.txt: Measurement data
-  - alldata_alpha.txt: Measurement data with calibrated densities with $\alpha$ particle (For traditional Range Energy relation)
-  - H3L_summary & H4L_sumamry: Summary of experimental data for the world average calclation (Figure. 4)
+  - alldata_alpha.txt: Calibrated densities with $\alpha$ particle
+  - _sumamry: Summary of experimental data
 
 ## Dependencies
 
@@ -42,23 +42,26 @@ Required:
 
 You can install dependences using pip:
 
-    ```sh
-    pip install pip_requirements.txt
-    ```
+```sh
+pip install pip_requirements.txt
+```
 
 ## Usage
 
 ```sh
 python main.py data/alldata.txt <density>
-# We used density $= 3.379$ in our analysis.
+# We used density = 3.379 in the analysis.
+# (Figure. 3)
 ```
 
 ```sh
 python mom_Helium_vs_pi.py data/alldata_alpha.txt 1
+# (Extended Data Figure. 3)
 ```
 
 ```sh
-python3 BL_weighted.py data/H3L_BL_summary.txt data/H4L_BL_summary.txt
+python BL_weighted.py data/H3L_BL_summary.txt data/H4L_BL_summary.txt
+# (Figure. 4)
 ```
 
 To use Range-Energy relation from GUI:
