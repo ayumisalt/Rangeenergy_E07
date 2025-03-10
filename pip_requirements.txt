@@ -1,0 +1,7 @@
+scipy
+matplotlib
+uncertainties
+colorama
+pycatima
+sympy
+pyqt5
