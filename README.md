@@ -43,7 +43,7 @@ Required:
 You can install dependences using pip:
 
 ```sh
-pip install pip_requirements.txt
+pip install -r pip_requirements.txt
 ```
 
 ## Usage
