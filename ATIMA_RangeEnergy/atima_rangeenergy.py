@@ -5,23 +5,26 @@ import pycatima
 ATIMA_splines = None
 ATIMA_Z_max = 8
 
-emulsion = pycatima.Material()
-emulsion.add_element(1.00784, 1, 0.0161)
-emulsion.add_element(12.011, 6, 0.0922)
-emulsion.add_element(14.0067, 7, 0.0307)
-emulsion.add_element(15.999, 8, 0.0847)
-emulsion.add_element(32.065, 16, 0.0003)
-emulsion.add_element(79.904, 35, 0.3229)
-emulsion.add_element(107.8682, 47, 0.444)
-emulsion.add_element(126.90447, 53, 0.0094)
+emulsion = pycatima.Material(
+    [
+        [0, 1, 1.61 / 1.007940 * 10000],
+        [0, 6, 9.22 / 12.010700 * 10000],
+        [0, 7, 3.07 / 14.006700 * 10000],
+        [0, 8, 8.47 / 15.999400 * 10000],
+        [0, 16, 0.03 / 32.065000 * 10000],
+        [0, 35, 32.29 / 79.904000 * 10000],
+        [0, 47, 44.4 / 107.868000 * 10000],
+        [0, 53, 0.94 / 126.904000 * 10000],
+    ]
+)
+
 
 def GetEmulsionSpline(EmulsionType, SplineDir="./splines_emul_1.41"):
     Zs = None
     MassRatios = None
     if EmulsionType == "E07_standard":
-        TargetZs = [1, 6, 7, 8, 16, 47, 35, 53]
-        MassRatios = [1.61, 9.22, 3.07, 8.47, 0.03, 44.40, 32.29, 0.94]
-        # MassRatios = [1.5, 9.3, 3.1, 6.8, 0.2, 45.40, 33.4, 0.3]
+        TargetZs = [1, 6, 7, 8, 16, 35, 47, 53]
+        MassRatios = [1.61, 9.22, 3.07, 8.47, 0.03, 32.29, 44.40, 0.94]
 
     else:
         raise
@@ -158,8 +161,8 @@ def RangeStragglingFromRange(Mass, Range, Z, density):
     """
 
     ke = KEfromRange(Mass, Range, Z, density)
-    projectile = pycatima.Projectile(Mass/amu, abs(Z))
-    results = pycatima.calculate(projectile(ke /(Mass/amu)), emulsion)
+    projectile = pycatima.Projectile(Mass / amu, abs(Z))
+    results = pycatima.calculate(projectile(ke / (Mass / amu)), emulsion)
     result = results.sigma_r * 10000 / density
 
     return result
@@ -180,10 +183,10 @@ def RangeStragglingFromKE(Mass, KE, Z, density):
         RangeStraggling : float std. dev. um
     """
 
-    projectile = pycatima.Projectile(Mass/amu, abs(Z))
-    results = pycatima.calculate(projectile(KE /(Mass/amu)), emulsion)
+    projectile = pycatima.Projectile(Mass / amu, abs(Z))
+    results = pycatima.calculate(projectile(KE / (Mass / amu)), emulsion)
     result = results.sigma_r * 10000 / density
-    
+
     return result
 
 
