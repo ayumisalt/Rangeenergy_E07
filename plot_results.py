@@ -173,6 +173,7 @@ def plot_BL_distribution(
 
     # --- 4) Final plot styling ---
     plt.xlabel("B$_{\u039b}$ [MeV]")
+    plt.ylabel("Event ID")
     plt.xlim(x_min, x_max)
     plt.ylim(-1, len(BL_values))
     plt.legend(borderaxespad=0)
