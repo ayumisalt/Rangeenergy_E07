@@ -90,7 +90,7 @@ if __name__ == "__main__":
         ymin=0,
         ymax=len(BL_H3L),
         color="b",
-        label="{0:.3f} +/- {1:.3f} MeV".format(weighted_ave_H3L, weighted_error_H3L),
+        label="{0:.3f} $\pm$ {1:.3f} MeV".format(weighted_ave_H3L, weighted_error_H3L),
     )
     plt.errorbar(
         BL_H3L,
@@ -210,7 +210,7 @@ if __name__ == "__main__":
         ymin=0,
         ymax=len(BL_H4L),
         color="b",
-        label="{0:.3f} +/- {1:.3f} MeV".format(weighted_ave_H4L, weighted_error_H4L),
+        label="{0:.3f} $\pm$ {1:.3f} MeV".format(weighted_ave_H4L, weighted_error_H4L),
     )
     plt.errorbar(
         BL_H4L,
